@@ -20,7 +20,7 @@ interface PendingChairProfile extends ProfileBase {
 
 export type ChairProfile = CompleteChairProfile | PendingChairProfile;
 
-export const chairProfiles = {
+export const chairProfiles: Record<SpeakerId, ChairProfile> = {
   "roger-luo": {
     name: "Xiu-Zhe (Roger) Luo",
     affiliation: "QuEra Computing",
@@ -84,13 +84,6 @@ export const chairProfiles = {
     source: "public-web",
     introduction: "Ying Wang is an Associate Professor of Systems Engineering at Stevens Institute of Technology. Her interdisciplinary research spans cybersecurity, wireless communications, health AI, and quantum computing. She holds a PhD in Electrical Engineering from Virginia Tech and brings experience from both academia and industry. At CEVNAC, she presents two studies addressing reliability in neutral-atom compilation and quantum error correction.",
     bio: "Ying Wang is an Associate Professor in the Department of Systems Engineering at Stevens Institute of Technology. Her interdisciplinary research spans cybersecurity, wireless communications, health AI, and quantum computing, and she has broad experience in both industry and academia. She earned her PhD in Electrical Engineering from Virginia Tech, her MS in Electrical Engineering from the University of Cincinnati, and her BS in Information Engineering from Beijing University of Posts and Telecommunications. Her recent quantum-computing research includes quantum neural networks and reinforcement-learning initializations for variational quantum circuits.",
-  },
-  "elham-kashefi": {
-    name: "Elham Kashefi",
-    affiliation: "University of Edinburgh",
-    status: "pending",
-    source: "pending",
-    statusNote: "The invited slot is scheduled, but the talk title, abstract, and speaker biography have not yet been supplied.",
   },
   "hanyu-wang": {
     name: "Hanyu Wang",

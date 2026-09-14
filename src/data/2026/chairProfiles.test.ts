@@ -49,17 +49,4 @@ describe("chairProfiles", () => {
     }
   });
 
-  it("contains one pending profile without unsupported copy", () => {
-    const pendingProfiles = Object.values(chairProfiles).filter(
-      (profile) => profile.status === "pending",
-    );
-
-    expect(pendingProfiles).toHaveLength(1);
-    for (const profile of pendingProfiles) {
-      expect(profile.source).toBe("pending");
-      expect(profile.statusNote.length).toBeGreaterThan(20);
-      expect(profile).not.toHaveProperty("bio");
-      expect(profile).not.toHaveProperty("introduction");
-    }
-  });
 });

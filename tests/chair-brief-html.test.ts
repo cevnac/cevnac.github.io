@@ -38,8 +38,8 @@ describe("built chair brief", () => {
     expect(chair).toContain('id="session-1"');
     expect(chair).toContain('id="session-2"');
     expect(chair).toContain('id="session-3"');
-    expect(speakerIds).toHaveLength(15);
-    expect(new Set(speakerIds).size).toBe(12);
+    expect(speakerIds).toHaveLength(14);
+    expect(new Set(speakerIds).size).toBe(11);
     expect(scheduleEntries).toEqual([
       "welcome",
       "device-models",
@@ -55,11 +55,10 @@ describe("built chair brief", () => {
       "decoder-aware-risk",
       "residual-aware-spacing",
       "afternoon-break",
-      "elham-invited-talk",
       "hanyu-invited-talk",
-      "session-three-break",
       "interactive-qec",
       "shuttling-optimization",
+      "closing-roundtable",
       "closing",
     ]);
 
@@ -67,7 +66,7 @@ describe("built chair brief", () => {
       ([, status]) => status,
     );
     expect(profileStatuses.filter((status) => status === "complete")).toHaveLength(14);
-    expect(profileStatuses.filter((status) => status === "pending")).toHaveLength(1);
+    expect(profileStatuses.filter((status) => status === "pending")).toHaveLength(0);
 
     for (const entry of schedule) {
       if (entry.kind !== "talk" && entry.kind !== "remarks") continue;
@@ -98,13 +97,13 @@ describe("built chair brief", () => {
     expect(chair).toContain("Talk abstract");
   });
 
-  it("marks exactly one unique speaker as pending", () => {
+  it("has no pending speaker material", () => {
     const chair = readBuilt("2026/chair-brief/index.html");
     const pendingArticles = [...chair.matchAll(/<article\b[^>]*data-speaker-id="([^"]+)"[^>]*data-profile-status="pending"[^>]*>/g)];
     const pendingIds = pendingArticles.map(([, id]) => id);
 
-    expect(new Set(pendingIds).size).toBe(1);
-    expect(chair).toContain("Pending speaker material");
+    expect(new Set(pendingIds).size).toBe(0);
+    expect(chair).not.toContain("Pending speaker material");
   });
 
   it("labels approved web research separately from speaker-supplied bios", () => {

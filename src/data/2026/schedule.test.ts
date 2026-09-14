@@ -27,23 +27,22 @@ describe("2026 workshop programme", () => {
       "decoder-aware-risk",
       "residual-aware-spacing",
       "afternoon-break",
-      "elham-invited-talk",
       "hanyu-invited-talk",
-      "session-three-break",
       "interactive-qec",
       "shuttling-optimization",
+      "closing-roundtable",
       "closing",
     ]);
   });
 
-  it("associates every speaking entry with one of twelve speakers", () => {
+  it("associates every speaking entry with one of eleven speakers", () => {
     const speakingEntries = schedule.filter(
       (entry) => entry.kind === "talk" || entry.kind === "remarks",
     );
 
-    expect(speakingEntries).toHaveLength(15);
+    expect(speakingEntries).toHaveLength(14);
     expect(speakingEntries.every((entry) => entry.speakerId !== undefined)).toBe(true);
-    expect(new Set(speakingEntries.map((entry) => entry.speakerId)).size).toBe(12);
+    expect(new Set(speakingEntries.map((entry) => entry.speakerId)).size).toBe(11);
   });
 
   it("does not associate breaks or roundtables with a speaker", () => {
