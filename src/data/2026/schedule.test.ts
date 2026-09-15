@@ -18,7 +18,7 @@ describe("2026 workshop programme", () => {
       "nvidia-compilation",
       "morning-break",
       "bloqade-pipeline",
-      "roundtable",
+      "morning-discussion-break",
       "lunch",
       "fault-tolerant-compilation",
       "lane-architecture",
